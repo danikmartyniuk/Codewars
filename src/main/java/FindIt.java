@@ -24,32 +24,18 @@
 
 public class FindIt {
     public static void main(String[] args) {
-        String equation = "99X=1(mod 8)";
+        String equation = "145X=1(mod 10)";
         System.out.println(new FindIt().findIt(equation));
     }
 
     public int findIt(String s) {
-        int multiplier = Integer.parseInt(s.substring(0, s.indexOf("X")));
-        int result = Integer.parseInt(s.substring(s.indexOf("=") + 1, s.indexOf("(")));
-        int mod = Integer.parseInt(s.substring(s.indexOf(" ") + 1, s.indexOf(")")));
-        int X = (result - (mod * (result/mod)))/multiplier;
-        if (multiplier % 2 == 0) {
-            do {
-                multiplier /= 2;
-            } while (String.valueOf(multiplier).length() == 1);
-        } else if (multiplier % 3 == 0) {
-            do {
-                multiplier /= 3;
-            } while (String.valueOf(multiplier).length() == 1);
-        } else if (multiplier % 5 == 0) {
-            do {
-                multiplier /= 5;
-            } while (String.valueOf(multiplier).length() == 1);
-        } else if (multiplier % 7 == 0) {
-            do {
-                multiplier /= 7;
-            } while (String.valueOf(multiplier).length() == 1);
+        for (int i = 1; i <= 10; i++) {
+            int mod = Integer.parseInt(s.substring(s.indexOf(" ") + 1, s.indexOf(")")));
+            if ((Integer.parseInt(s.substring(0, s.indexOf("X"))) * i) % mod
+                    == Integer.parseInt(s.substring(s.indexOf("=") + 1, s.indexOf("("))) % mod) {
+                return i;
+            }
         }
-        return Math.abs(multiplier - mod);
+        return -1;
     }
 }
