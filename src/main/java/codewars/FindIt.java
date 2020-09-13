@@ -1,3 +1,5 @@
+package codewars;
+
 /**
  * Given String s in the form of equation.
  * Your task is to parse the s string and find the "X" value from string.

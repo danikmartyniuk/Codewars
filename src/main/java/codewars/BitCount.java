@@ -1,3 +1,5 @@
+package codewars;
+
 import java.math.BigInteger;
 
 /**
@@ -21,9 +23,11 @@ public class BitCount {
 
     public static BigInteger countOnes (long left, long right) {
         int sum = 0;
-        for (int i = (int) left; i <= right; i++) {
-            sum += Integer.toBinaryString(i).length() - Integer.toBinaryString(i).replace("1", "").length();
+        for (long i = left; i <= right; i++) {
+            //get string of binary
+            //parse it to the int array
+            //if arr[j] == 1 --> sum++
         }
-        return BigInteger.valueOf(sum);
+        return BigInteger.ONE;
     }
 }
